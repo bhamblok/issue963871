@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+  <style>
+  /* initial setup */
+  html, body { margin: 0; padding: 0; }
+  .container { float: left; padding: 1em; }
+  .layout {
+    display: layout(my-layout);
+    width: 100px;
+    height: 100px;
+    color: var(--my-color-property-fg, white);
+    background-color: var(--my-color-property-bg, red);
+    background-image: paint(my-painted-image);
+  }
+
+  /* setup custom properties */
+  :root { --random-css-var-1: 1; }
+  /* .container { --random-css-var-2: 2; } */
+  [myattribute="2"] {
+    --my-integer-property: 2;
+    --my-color-property-fg: black;
+    --my-color-property-bg: blue;
+  }
+  </style>
+  <script>
+    if (CSS.registerProperty) {
+      CSS.registerProperty({ name: '--my-integer-property', syntax: '<integer>', initialValue: 1, inherits: true });
+      CSS.registerProperty({ name: '--my-color-property-fg', syntax: '<color>', initialValue: 'white', inherits: true });
+      CSS.registerProperty({ name: '--my-color-property-bg', syntax: '<color>', initialValue: 'red', inherits: true });
+      CSS.registerProperty({ name: '--random-css-var-1', syntax: '<integer>', initialValue: 1, inherits: true });
+      CSS.registerProperty({ name: '--random-css-var-2', syntax: '<integer>', initialValue: 2, inherits: true });
+    }
+    const timeoutDuration = 500;
+    setTimeout(() => {
+      console.log(' ');
+      console.log(`Initialize Paint and Layout API (after ${timeoutDuration}ms)`);
+      console.log('============================================================');
+      if (CSS.paintWorklet && CSS.paintWorklet.addModule) {
+        CSS.paintWorklet.addModule('/paint/paint.js');
+      }
+      if (CSS.layoutWorklet && CSS.layoutWorklet.addModule) {
+        CSS.layoutWorklet.addModule('/layout/layout.js');
+      }
+    }, timeoutDuration);
+  </script>
+</head>
+
+<body>
+	<div class="container">
+    <div class="layout-container">
+      <div class="layout">A</div>
+    </div>
+		<div class="layout-container" myattribute="2">
+      <div class="layout">B</div>
+    </div>
+  </div>
+</body>
+
+</html>
