@@ -11,6 +11,7 @@ registerPaint('my-painted-image', class {
 		const blockWidth = size.width * 0.33;
     const blockHeight = size.height * 0.85;
     
+    console.log('--');
     console.log('PAINT API', '--my-integer-property:', styleMap.get('--my-integer-property').toString());
     console.log('PAINT API', '--my-color-property-fg:', styleMap.get('--my-color-property-fg').toString());
     console.log('PAINT API', '--my-color-property-bg:', styleMap.get('--my-color-property-bg').toString());
