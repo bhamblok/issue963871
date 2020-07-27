@@ -16,7 +16,7 @@ So... I included an iframe in my minimal test case example, showing exactly the 
 
 ## How to reproduce?
 
-Navigate to https://bhamblok.github.io/issue963871 and
+Navigate to https://bhamblok.github.io/issue963871/ and
 - see the difference in the viewport
 - see the logs in the devtools-console
   - the logs being shown after 500ms, are the logs of the "Fixed" version of the iframe, where this one line of CSS-code has been put in comments

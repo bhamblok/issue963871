@@ -37,10 +37,10 @@
       console.log(`Initialize Paint and Layout API (after ${timeoutDuration}ms)`);
       console.log('============================================================');
       if (CSS.paintWorklet && CSS.paintWorklet.addModule) {
-        CSS.paintWorklet.addModule('/paint/paint.js');
+        CSS.paintWorklet.addModule('./paint/paint.js');
       }
       if (CSS.layoutWorklet && CSS.layoutWorklet.addModule) {
-        CSS.layoutWorklet.addModule('/layout/layout.js');
+        CSS.layoutWorklet.addModule('./layout/layout.js');
       }
     }, timeoutDuration);
   </script>
